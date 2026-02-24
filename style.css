@@ -1,0 +1,462 @@
+html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%; 
+    box-sizing: border-box; /* Crucial: keeps padding inside the width */
+}
+
+.hero, .events-section {
+    width: 100%;
+    max-width: 1200px; /* Keeps your content from stretching too wide */
+    margin: 0 auto;    /* Centers everything */
+}
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- Navigation --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4285F4; /* Google Blue */
+}
+
+.logo span {
+    color: #5f6368;
+}
+
+.login-btn {
+    background-color: #4285F4;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.login-btn:hover {
+    background-color: #3367d6;
+    transform: translateY(-2px);
+}
+
+/* --- Hero & Bouncing Dots Animation --- */
+.hero {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+}
+
+.text-blue { color: #4285F4; }
+
+.google-dots {
+    margin-top: 30px;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 0 8px;
+    animation: bounce 1.2s infinite ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.blue { background: #4285F4; animation-delay: 0s; }
+.red { background: #EA4335; animation-delay: 0.1s; }
+.yellow { background: #FBBC04; animation-delay: 0.2s; }
+.green { background: #34A853; animation-delay: 0.3s; }
+
+/* --- Events Section --- */
+.events-section {
+    padding: 60px 10%;
+    text-align: center;
+}
+
+.event-filters {
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.filter-btn.active {
+    background: #4285F4;
+    color: white;
+    border-color: #4285F4;
+}
+
+.event-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.event-card {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: 0.4s;
+    border-top: 6px solid #4285F4;
+}
+
+.event-card:hover {
+    transform: translateY(-10px);
+}
+
+/* --- Modal & Login Form --- */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px); /* Eye-catchy blur */
+    z-index: 2000;
+}
+
+.modal-content {
+    background: white;
+    width: 90%;
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    border-radius: 15px;
+    position: relative;
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.form-toggle {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #eee;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    color: #777;
+}
+
+.tab.active {
+    color: #4285F4;
+    border-bottom: 3px solid #4285F4;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #34A853; /* Success Green */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.filter-btn, .submit-btn, .login-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.filter-btn:active, .submit-btn:active {
+    transform: scale(0.95);
+}
+/* Update the Nav Links container */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Spacing between Events and Login */
+}
+
+/* Style for the "Events" link */
+.nav-links li a {
+    text-decoration: none;
+    color: #5f6368; /* Google Gray */
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 4px;
+}
+
+/* Hover effect for the link */
+.nav-links li a:hover {
+    color: #4285F4; /* Turns Google Blue */
+    background-color: rgba(66, 133, 244, 0.05); /* Subtle blue glow */
+}
+
+/* Ensure the Login button still looks like a primary action */
+.login-btn {
+    background-color: #4285F4;
+    color: white !important; /* Forces text to stay white */
+    padding: 10px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: background 0.3s, transform 0.2s;
+}
+
+.login-btn:hover {
+    background-color: #3367d6;
+    box-shadow: 0 4px 8px rgba(66, 133, 244, 0.3);
+    transform: translateY(-1px);
+}
+/* Logo Styling */
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.g-blue { color: #4285F4; }
+.g-red { color: #EA4335; }
+.g-green { color: #34A853; }
+.csmu-tag { 
+    color: #5f6368; 
+    font-weight: 400; 
+    margin-left: 5px;
+    padding-left: 10px;
+    border-left: 2px solid #ddd;
+}
+
+/* Ensure Nav doesn't stack awkwardly */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%; /* Slightly more padding for the long name */
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(60,64,67,0.1), 0 2px 6px 2px rgba(60,64,67,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Responsive fix for small screens */
+@media (max-width: 768px) {
+    .logo { font-size: 16px; }
+    .csmu-tag { display: none; } /* Hide CSMU tag on very small phones to save space */
+}
+/* Logo - Bold & Black */
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #000000;
+    display: flex;
+    align-items: center;
+}
+
+.csmu-tag {
+    color: #5f6368;
+    font-weight: 400;
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 1px solid #dadce0;
+}
+
+/* Nav Link Buttons */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Spacing between links */
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #5f6368;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    background-color: #f1f3f4;
+    color: #202124;
+}
+
+/* Primary Login Button */
+.login-btn {
+    background-color: #4285F4;
+    color: white;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: box-shadow 0.2s, transform 0.1s;
+}
+
+.login-btn:hover {
+    background-color: #3367d6;
+    box-shadow: 0 1px 3px rgba(60,64,67,0.3), 0 4px 8px 3px rgba(60,64,67,0.15);
+}
+.navbar {
+    display: flex;
+    justify-content: space-between; /* This is the magic line that pushes items apart */
+    align-items: center;            /* Vertically centers everything */
+    padding: 15px 5%;              /* Adds breathing room on the sides */
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    width: 100%;
+    box-sizing: border-box;         /* Ensures padding doesn't break the width */
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 10px;                     /* Adjust this to change spacing between buttons */
+    margin: 0;
+    padding: 0;
+}.about-section {
+    padding: 100px 10%;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.about-container h2 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: #202124;
+}
+
+.main-description {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #5f6368;
+    max-width: 900px;
+    margin: 0 auto 30px auto;
+}
+
+.gdg-link-card {
+    display: inline-block;
+    background: #f8f9fa;
+    padding: 20px 40px;
+    border-radius: 12px;
+    border-left: 6px solid #FBBC04; /* The Google Yellow accent */
+}
+
+.gdg-link-card a {
+    color: #4285F4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.gdg-link-card a:hover {
+    text-decoration: underline;
+}
+.site-footer {
+    background-color: #202124;
+    color: white;
+    padding: 40px 10%;
+    margin-top: 50px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.social-links a {
+    color: #bdc1c6;
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #ffffff;
+}
+
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .social-links a {
+        margin: 0 10px;
+    }
+}

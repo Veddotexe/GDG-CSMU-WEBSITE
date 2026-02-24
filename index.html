@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDG CSMU | Google Developer Groups</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+    <div class="logo">
+        Google Developers Group <span class="csmu-tag">CSMU</span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="#about" class="nav-item">About GDG</a></li>
+        <li><a href="#chapters" class="nav-item">Chapters</a></li>
+        <li><a href="#connect" class="nav-item">Connect</a></li>
+        <li><button class="login-btn" onclick="openModal()">Login / Signup</button></li>
+    </ul>
+</nav>
+
+</nav>
+
+    </nav>
+
+    <header class="hero">
+        <h1 class="fade-in">Connect. Learn. <span class="text-blue">Grow.</span></h1>
+        <p class="fade-in-delay">Welcome to GDG CSMU - The community for developers.</p>
+        <div class="google-dots">
+            <span class="dot blue"></span><span class="dot red"></span>
+            <span class="dot yellow"></span><span class="dot green"></span>
+        </div>
+    </header>
+
+    <section id="events" class="events-section">
+        <h2 class="section-title">Community Events</h2>
+        <div class="event-filters">
+            <button class="filter-btn active" onclick="filterEvents('all')">All</button>
+            <button class="filter-btn" onclick="filterEvents('upcoming')">Upcoming</button>
+            <button class="filter-btn" onclick="filterEvents('past')">Past</button>
+        </div>
+        <div class="event-grid" id="eventGrid">
+            </div>
+    </section>
+
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="form-toggle">
+                <button id="studentTab" class="tab active" onclick="switchTab('student')">Student</button>
+                <button id="coreTab" class="tab" onclick="switchTab('core')">Core Member</button>
+            </div>
+            
+            <form id="authForm" class="auth-form">
+                <h3 id="formTitle">Student Login</h3>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit" class="submit-btn">Continue</button>
+                <p class="toggle-text">Don't have an account? <a href="#" onclick="toggleSignup()">Sign up</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+<div id="authModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        
+        <div class="form-toggle">
+            <button id="studentTab" class="tab active" onclick="switchTab('student')">Student Portal</button>
+            <button id="coreTab" class="tab admin-tab" onclick="switchTab('core')">Admin Access</button>
+        </div>
+        
+        <form id="authForm" class="auth-form">
+            <h3 id="formTitle">Student Login</h3>
+            <p id="formSubtitle" style="font-size: 12px; color: #666; margin-bottom: 15px;">Access your community dashboard</p>
+            
+            <input type="email" id="userEmail" placeholder="GDG Email / Institutional Email" required>
+            <input type="password" id="userPass" placeholder="Password" required>
+            
+            <div id="adminKeyField" style="display:none;">
+                <input type="password" id="adminKey" placeholder="Secret Admin Key">
+            </div>
+
+            <button type="submit" id="mainSubmitBtn" class="submit-btn">Login to Portal</button>
+            <p class="toggle-text">New member? <a href="#" onclick="toggleSignup()">Create account</a></p>
+        </form>
+    </div>
+</div>
+</header>
+
+<section id="about" class="about-section">
+    <div class="about-container">
+        <h2>About GDG CSMU</h2>
+        <p class="main-description">
+            GDG on Campus Chhatrapati Shivaji Maharaj University - Navi Mumbai, India is an independent group; 
+            our activities and the opinions expressed here should in no way be linked to Google, the corporation.
+        </p>
+        
+        <div class="gdg-link-card">
+            <p>To learn more about the GDG program, visit 
+                <a href="https://developers.google.com/community" target="_blank">developers.google.com/community</a>
+            </p>
+        </div>
+    </div>
+</section>
+<section id="events" class="events-section">
+    <footer class="site-footer">
+    <div class="footer-content">
+        <p>&copy; 2026 GDG CSMU. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="#" title="LinkedIn">LinkedIn</a>
+            <a href="#" title="Twitter">Twitter</a>
+            <a href="#" title="Instagram">Instagram</a>
+            <a href="#" title="GitHub">GitHub</a>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard | GDG CSMU</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .dashboard-container { padding: 50px 10%; }
+        .welcome-card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); margin-bottom: 30px; }
+        .admin-panel { display: none; background: #fff4f4; border: 1px dashed #EA4335; padding: 20px; border-radius: 8px; }
+        .logout-btn { background: #5f6368; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; }
+    </style>
+</head>
+<body style="background: #f8f9fa;">
+
+    <nav class="navbar">
+        <div class="logo">GDG CSMU <span class="csmu-tag">Dashboard</span></div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </nav>
+
+    <div class="dashboard-container">
+        <div class="welcome-card">
+            <h1 id="welcomeUser">Welcome back!</h1>
+            <p id="roleBadge" style="display:inline-block; padding: 4px 12px; border-radius: 20px; color: white; font-size: 12px; margin-top: 10px;"></p>
+        </div>
+
+        <div id="coreTools" class="admin-panel">
+        <div id="coreTools" class="admin-panel">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+        <h3>Admin Event Manager</h3>
+        <button class="login-btn" style="background:#34A853;" onclick="addEventRow()">Create New Event +</button>
+    </div>
+    
+    <div style="overflow-x: auto;">
+        <table id="eventTable" style="width: 100%; border-collapse: collapse; background: white;">
+            <thead>
+                <tr style="background: #f1f3f4; text-align: left;">
+                    <th style="padding: 12px; border: 1px solid #ddd;">Event Name</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Date</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Status</th>
+                    <th style="padding: 12px; border: 1px solid #ddd;">Action</th>
+                </tr>
+            </thead>
+            <tbody id="eventTableBody">
+                </tbody>
+        </table>
+    </div>
+</div>
+
+        <div class="student-view">
+            <h3>Your Registered Events</h3>
+            <p style="color: #777;">You haven't registered for any events yet.</p>
+        </div>
+    </div>
+
+    <script>
+        // Check login status on load
+        window.onload = function() {
+            const role = localStorage.getItem('userRole');
+            const name = localStorage.getItem('userName');
+
+            if (!role) {
+                window.location.href = 'index.html'; // Redirect back if not logged in
+            }
+
+            document.getElementById('welcomeUser').innerText = `Welcome, ${name}!`;
+            const badge = document.getElementById('roleBadge');
+            badge.innerText = role.toUpperCase();
+            
+            if (role === 'core') {
+                badge.style.background = '#EA4335'; // Red for Admin
+                document.getElementById('coreTools').style.display = 'block';
+            } else {
+                badge.style.background = '#4285F4'; // Blue for Student
+            }
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
+<div class="team-management" style="margin-top: 40px;">
+    <h3>Core Team Members</h3>
+    <ul id="teamList" style="list-style: none; padding: 0;">
+        <li style="background: #fff; padding: 10px; border-radius: 5px; margin-bottom: 5px; border-left: 4px solid #EA4335;">
+            <strong>GDG Lead:</strong> admin@csmu.edu.in
+        </li>
+        </ul>
+</div>
